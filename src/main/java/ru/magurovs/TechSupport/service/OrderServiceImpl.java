@@ -44,12 +44,11 @@ public class OrderServiceImpl implements OrderService {
 			ArrayList<Order> orders= new ArrayList<>(ORDER_REPOSITORY_MAP.values());
 			ArrayList<Map<String, String>> listOrdersForJson = new ArrayList<>();
 			
-			
-			for (Order arr: orders) {
+			for (Order o: orders) {
 				Map<String, String> mapOrdersForJson = new HashMap<>();
-				mapOrdersForJson.put("Number", arr.getNumber());
-				mapOrdersForJson.put("typeProblem", arr.getTypeProblem().toString());
-				mapOrdersForJson.put("timeProblem", arr.getTimeProblem().toString());
+				mapOrdersForJson.put("number", o.getNumber());
+				mapOrdersForJson.put("typeProblem", o.getTypeProblem().toString());
+				mapOrdersForJson.put("timeProblem", new SimpleDateFormat("dd.MM.yyyy HH:mm").format(o.getTimeProblem()));
 				listOrdersForJson.add(mapOrdersForJson);
 			}
 			
